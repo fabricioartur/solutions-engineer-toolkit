@@ -1,0 +1,192 @@
+<svg viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" font-family="'SF Mono','Fira Code','Menlo',monospace" role="img">
+  <title>Solutions Engineer Toolkit — Terminal Demo</title>
+
+  <!-- Window chrome -->
+  <rect width="900" height="760" rx="10" fill="#1e1e2e"/>
+  <rect width="900" height="36" rx="10" fill="#2a2a3d"/>
+  <rect y="26" width="900" height="10" fill="#2a2a3d"/>
+  <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="18" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="18" r="6" fill="#28c840"/>
+  <text x="450" y="23" text-anchor="middle" fill="#6c7086" font-size="12">solutions-engineer-toolkit — zsh</text>
+
+  <!-- ── Command 1 ── -->
+  <line x1="20" y1="56" x2="880" y2="56" stroke="#3d3d5c" stroke-width="1"/>
+  <text x="450" y="70" text-anchor="middle" fill="#89b4fa" font-size="11" font-weight="700">$ python main.py account-intel 'Meridian Bank' --industry 'Financial Services'</text>
+  <line x1="20" y1="76" x2="880" y2="76" stroke="#3d3d5c" stroke-width="1"/>
+
+  <!-- Panel: Account Intelligence -->
+  <rect x="20" y="84" width="860" height="42" rx="4" fill="#181825" stroke="#89b4fa" stroke-width="1"/>
+  <text x="36" y="101" fill="#89b4fa" font-size="11" font-weight="700">Account Intelligence</text>
+  <text x="200" y="101" fill="#6c7086" font-size="11"> — RAG + ChromaDB + OpenAI</text>
+  <text x="36" y="118" fill="#585b70" font-size="10">Retrieving industry context from vector store...</text>
+
+  <!-- Panel: Account Brief -->
+  <rect x="20" y="132" width="860" height="42" rx="4" fill="#181825" stroke="#89b4fa" stroke-width="1"/>
+  <text x="36" y="149" fill="#89b4fa" font-size="11" font-weight="700">Account Brief — Meridian Bank</text>
+  <text x="36" y="166" fill="#585b70" font-size="10">Industry: Financial Services  |  AI Maturity: Developing</text>
+
+  <!-- Table: Top AI Opportunities -->
+  <!-- Header -->
+  <rect x="20" y="180" width="860" height="20" fill="#313244"/>
+  <text x="28" y="194" fill="#cdd6f4" font-size="10" font-weight="700">Use Case</text>
+  <text x="310" y="194" fill="#cdd6f4" font-size="10" font-weight="700">Business Impact</text>
+  <text x="590" y="194" fill="#cdd6f4" font-size="10" font-weight="700">Complexity</text>
+  <text x="710" y="194" fill="#cdd6f4" font-size="10" font-weight="700">Time to Value</text>
+
+  <!-- Row 1 -->
+  <rect x="20" y="200" width="860" height="36" fill="#1e1e2e"/>
+  <rect x="20" y="200" width="860" height="36" fill="none" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="213" fill="#cdd6f4" font-size="9">Intelligent Document Processing</text>
+  <text x="28" y="226" fill="#585b70" font-size="9">for KYC/AML</text>
+  <text x="310" y="213" fill="#cdd6f4" font-size="9">Reduce KYC review time from 14 days</text>
+  <text x="310" y="226" fill="#585b70" font-size="9">to under 2 days. Save R$4.2M/year.</text>
+  <text x="614" y="220" text-anchor="middle" fill="#febc2e" font-size="9" font-weight="700">Medium</text>
+  <text x="756" y="220" text-anchor="middle" fill="#cdd6f4" font-size="9">10-14 weeks</text>
+
+  <!-- Row 2 -->
+  <rect x="20" y="236" width="860" height="36" fill="#181825"/>
+  <rect x="20" y="236" width="860" height="36" fill="none" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="249" fill="#cdd6f4" font-size="9">AI-Powered WhatsApp Virtual</text>
+  <text x="28" y="262" fill="#585b70" font-size="9">Assistant</text>
+  <text x="310" y="249" fill="#cdd6f4" font-size="9">Deflect 50-60% of tier-1 contacts.</text>
+  <text x="310" y="262" fill="#585b70" font-size="9">R$8.1M/year savings.</text>
+  <text x="614" y="256" text-anchor="middle" fill="#febc2e" font-size="9" font-weight="700">Medium</text>
+  <text x="756" y="256" text-anchor="middle" fill="#cdd6f4" font-size="9">12-16 weeks</text>
+
+  <!-- Row 3 -->
+  <rect x="20" y="272" width="860" height="36" fill="#1e1e2e"/>
+  <rect x="20" y="272" width="860" height="36" fill="none" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="285" fill="#cdd6f4" font-size="9">Regulatory Reporting Automation</text>
+  <text x="28" y="298" fill="#585b70" font-size="9">(BACEN)</text>
+  <text x="310" y="285" fill="#cdd6f4" font-size="9">Quarterly reporting: 3 weeks → 3 days.</text>
+  <text x="310" y="298" fill="#585b70" font-size="9">R$12M/year impact.</text>
+  <text x="614" y="289" text-anchor="middle" fill="#f38ba8" font-size="9" font-weight="700">High</text>
+  <text x="756" y="289" text-anchor="middle" fill="#cdd6f4" font-size="9">20-26 weeks</text>
+
+  <!-- Row 4 -->
+  <rect x="20" y="308" width="860" height="36" fill="#181825"/>
+  <rect x="20" y="308" width="860" height="36" fill="none" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="321" fill="#cdd6f4" font-size="9">Real-time Credit Risk Scoring</text>
+  <text x="28" y="334" fill="#585b70" font-size="9">Enhancement</text>
+  <text x="310" y="321" fill="#cdd6f4" font-size="9">Reduce NPL rate by 1.2-1.8pp.</text>
+  <text x="310" y="334" fill="#585b70" font-size="9">R$12M/year reduction.</text>
+  <text x="614" y="328" text-anchor="middle" fill="#f38ba8" font-size="9" font-weight="700">High</text>
+  <text x="756" y="328" text-anchor="middle" fill="#cdd6f4" font-size="9">24-32 weeks</text>
+
+  <!-- Row 5 -->
+  <rect x="20" y="344" width="860" height="36" fill="#1e1e2e"/>
+  <rect x="20" y="344" width="860" height="36" fill="none" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="357" fill="#cdd6f4" font-size="9">AI-Assisted Financial Advisory</text>
+  <text x="28" y="370" fill="#585b70" font-size="9">(SME Segment)</text>
+  <text x="310" y="357" fill="#cdd6f4" font-size="9">+18% product attachment rate.</text>
+  <text x="310" y="370" fill="#585b70" font-size="9">R$5.6M/year estimated impact.</text>
+  <text x="614" y="364" text-anchor="middle" fill="#febc2e" font-size="9" font-weight="700">Medium</text>
+  <text x="756" y="364" text-anchor="middle" fill="#cdd6f4" font-size="9">16-20 weeks</text>
+
+  <text x="28" y="398" fill="#a6e3a1" font-size="10">✓ Account Brief saved to output/meridian_bank_account.json</text>
+
+  <!-- ── Command 2 ── -->
+  <line x1="20" y1="412" x2="880" y2="412" stroke="#3d3d5c" stroke-width="1"/>
+  <text x="450" y="426" text-anchor="middle" fill="#89b4fa" font-size="11" font-weight="700">$ python main.py eval --module account-intel --input output/account.json</text>
+  <line x1="20" y1="432" x2="880" y2="432" stroke="#3d3d5c" stroke-width="1"/>
+
+  <!-- Eval Panel -->
+  <rect x="20" y="440" width="860" height="42" rx="4" fill="#181825" stroke="#89b4fa" stroke-width="1"/>
+  <text x="450" y="453" text-anchor="middle" fill="#585b70" font-size="9">Eval — account-intel</text>
+  <text x="36" y="473" fill="#89b4fa" font-size="13" font-weight="700">Grade: B  |  Score: 8.5/10</text>
+  <text x="600" y="473" fill="#a6e3a1" font-size="10">Production ready: ✓ Yes</text>
+
+  <!-- Eval Table Header -->
+  <rect x="20" y="488" width="860" height="20" fill="#313244"/>
+  <text x="28" y="502" fill="#cdd6f4" font-size="10" font-weight="700">Dimension</text>
+  <text x="220" y="502" fill="#cdd6f4" font-size="10" font-weight="700">Score</text>
+  <text x="320" y="502" fill="#cdd6f4" font-size="10" font-weight="700">Justification</text>
+
+  <!-- Eval rows -->
+  <rect x="20" y="508" width="860" height="24" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="524" fill="#cdd6f4" font-size="9">Completeness</text>
+  <text x="235" y="524" text-anchor="middle" fill="#a6e3a1" font-size="9" font-weight="700">9/10</text>
+  <text x="320" y="524" fill="#585b70" font-size="9">All expected fields are populated with substantive content.</text>
+
+  <rect x="20" y="532" width="860" height="24" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="548" fill="#cdd6f4" font-size="9">Accuracy</text>
+  <text x="235" y="548" text-anchor="middle" fill="#89b4fa" font-size="9" font-weight="700">8/10</text>
+  <text x="320" y="548" fill="#585b70" font-size="9">Recommendations well-aligned with stated challenges; ROI clearly estimated.</text>
+
+  <rect x="20" y="556" width="860" height="24" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="572" fill="#cdd6f4" font-size="9">Actionability</text>
+  <text x="235" y="572" text-anchor="middle" fill="#a6e3a1" font-size="9" font-weight="700">9/10</text>
+  <text x="320" y="572" fill="#585b70" font-size="9">SE could walk into a Meridian Bank meeting tomorrow using this output.</text>
+
+  <rect x="20" y="580" width="860" height="24" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="596" fill="#cdd6f4" font-size="9">Hallucination Risk</text>
+  <text x="235" y="596" text-anchor="middle" fill="#febc2e" font-size="9" font-weight="700">8/10</text>
+  <text x="320" y="596" fill="#585b70" font-size="9">Minor: ROI numbers appear model-generated, not externally sourced.</text>
+
+  <!-- ── Command 3 ── -->
+  <line x1="20" y1="616" x2="880" y2="616" stroke="#3d3d5c" stroke-width="1"/>
+  <text x="450" y="630" text-anchor="middle" fill="#89b4fa" font-size="11" font-weight="700">$ python main.py metrics</text>
+  <line x1="20" y1="636" x2="880" y2="636" stroke="#3d3d5c" stroke-width="1"/>
+
+  <!-- Metrics Table Header -->
+  <rect x="20" y="644" width="860" height="20" fill="#313244"/>
+  <text x="28" y="658" fill="#cdd6f4" font-size="9" font-weight="700">Module</text>
+  <text x="210" y="658" fill="#cdd6f4" font-size="9" font-weight="700">Runs</text>
+  <text x="280" y="658" fill="#cdd6f4" font-size="9" font-weight="700">Avg Latency</text>
+  <text x="400" y="658" fill="#cdd6f4" font-size="9" font-weight="700">Total Tokens</text>
+  <text x="530" y="658" fill="#cdd6f4" font-size="9" font-weight="700">Total Cost</text>
+  <text x="650" y="658" fill="#cdd6f4" font-size="9" font-weight="700">Errors</text>
+
+  <!-- Metrics rows -->
+  <rect x="20" y="664" width="860" height="14" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="674" fill="#cdd6f4" font-size="8">solution-architect</text>
+  <text x="222" y="674" text-anchor="middle" fill="#a6e3a1" font-size="8">3</text>
+  <text x="330" y="674" text-anchor="middle" fill="#cdd6f4" font-size="8">42,180ms</text>
+  <text x="450" y="674" text-anchor="middle" fill="#cdd6f4" font-size="8">28,440</text>
+  <text x="568" y="674" text-anchor="middle" fill="#cdd6f4" font-size="8">$0.0284</text>
+  <text x="660" y="674" text-anchor="middle" fill="#a6e3a1" font-size="8">0</text>
+
+  <rect x="20" y="678" width="860" height="14" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="688" fill="#cdd6f4" font-size="8">account-intel</text>
+  <text x="222" y="688" text-anchor="middle" fill="#a6e3a1" font-size="8">8</text>
+  <text x="330" y="688" text-anchor="middle" fill="#cdd6f4" font-size="8">6,320ms</text>
+  <text x="450" y="688" text-anchor="middle" fill="#cdd6f4" font-size="8">19,200</text>
+  <text x="568" y="688" text-anchor="middle" fill="#cdd6f4" font-size="8">$0.0096</text>
+  <text x="660" y="688" text-anchor="middle" fill="#a6e3a1" font-size="8">0</text>
+
+  <rect x="20" y="692" width="860" height="14" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="702" fill="#cdd6f4" font-size="8">rfp-analyzer</text>
+  <text x="222" y="702" text-anchor="middle" fill="#a6e3a1" font-size="8">2</text>
+  <text x="330" y="702" text-anchor="middle" fill="#cdd6f4" font-size="8">18,740ms</text>
+  <text x="450" y="702" text-anchor="middle" fill="#cdd6f4" font-size="8">31,100</text>
+  <text x="568" y="702" text-anchor="middle" fill="#cdd6f4" font-size="8">$0.0156</text>
+  <text x="660" y="702" text-anchor="middle" fill="#a6e3a1" font-size="8">0</text>
+
+  <rect x="20" y="706" width="860" height="14" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="716" fill="#cdd6f4" font-size="8">proposal-writer</text>
+  <text x="222" y="716" text-anchor="middle" fill="#a6e3a1" font-size="8">2</text>
+  <text x="330" y="716" text-anchor="middle" fill="#cdd6f4" font-size="8">24,300ms</text>
+  <text x="450" y="716" text-anchor="middle" fill="#cdd6f4" font-size="8">22,600</text>
+  <text x="568" y="716" text-anchor="middle" fill="#cdd6f4" font-size="8">$0.0113</text>
+  <text x="660" y="716" text-anchor="middle" fill="#a6e3a1" font-size="8">0</text>
+
+  <rect x="20" y="720" width="860" height="14" fill="#1e1e2e" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="730" fill="#cdd6f4" font-size="8">discovery</text>
+  <text x="222" y="730" text-anchor="middle" fill="#a6e3a1" font-size="8">5</text>
+  <text x="330" y="730" text-anchor="middle" fill="#cdd6f4" font-size="8">12,600ms</text>
+  <text x="450" y="730" text-anchor="middle" fill="#cdd6f4" font-size="8">14,800</text>
+  <text x="568" y="730" text-anchor="middle" fill="#cdd6f4" font-size="8">$0.0074</text>
+  <text x="660" y="730" text-anchor="middle" fill="#f38ba8" font-size="8">1</text>
+
+  <rect x="20" y="734" width="860" height="14" fill="#181825" stroke="#313244" stroke-width="1"/>
+  <text x="28" y="744" fill="#cdd6f4" font-size="8">evals</text>
+  <text x="222" y="744" text-anchor="middle" fill="#a6e3a1" font-size="8">8</text>
+  <text x="330" y="744" text-anchor="middle" fill="#cdd6f4" font-size="8">4,100ms</text>
+  <text x="450" y="744" text-anchor="middle" fill="#cdd6f4" font-size="8">9,600</text>
+  <text x="568" y="744" text-anchor="middle" fill="#cdd6f4" font-size="8">$0.0048</text>
+  <text x="660" y="744" text-anchor="middle" fill="#a6e3a1" font-size="8">0</text>
+
+  <text x="28" y="758" fill="#585b70" font-size="9">Total cost across all runs: </text>
+  <text x="195" y="758" fill="#a6e3a1" font-size="9" font-weight="700">$0.0771 USD</text>
+</svg>

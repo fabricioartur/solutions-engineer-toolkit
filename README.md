@@ -44,6 +44,12 @@ Each module demonstrates a different framework from the enterprise agentic AI st
 
 ---
 
+## Preview
+
+![Terminal Demo](docs/images/demo_terminal.svg)
+
+---
+
 ## Quick Start
 
 ```bash
