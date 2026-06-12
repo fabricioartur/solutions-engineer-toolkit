@@ -1,0 +1,122 @@
+<svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" font-family="'SF Mono', 'Fira Code', monospace" role="img">
+  <title>Solutions Engineer Toolkit — Architecture</title>
+  <desc>Diagrama mostrando os 7 módulos do toolkit e seus frameworks</desc>
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#0d1117" rx="12"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#e6edf3" font-size="15" font-weight="700" letter-spacing="1">SOLUTIONS ENGINEER TOOLKIT</text>
+  <text x="450" y="56" text-anchor="middle" fill="#8b949e" font-size="10" letter-spacing="2">AI-POWERED PRE-SALES STACK</text>
+
+  <!-- SE Input Box -->
+  <rect x="370" y="72" width="160" height="42" rx="8" fill="#21262d" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="450" y="88" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="700">SOLUTIONS ENGINEER</text>
+  <text x="450" y="103" text-anchor="middle" fill="#8b949e" font-size="9">company · RFP · requirements</text>
+
+  <!-- Arrow down from SE -->
+  <line x1="450" y1="114" x2="450" y2="134" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Defs -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+
+  <!-- Module 1: Account Intelligence -->
+  <rect x="60" y="138" width="190" height="80" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <rect x="60" y="138" width="190" height="22" rx="8" fill="#f0883e" opacity="0.15"/>
+  <rect x="60" y="150" width="190" height="10" fill="#f0883e" opacity="0.15"/>
+  <text x="155" y="153" text-anchor="middle" fill="#f0883e" font-size="9" font-weight="700">01 · ACCOUNT INTELLIGENCE</text>
+  <text x="155" y="172" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">RAG + ChromaDB</text>
+  <text x="155" y="186" text-anchor="middle" fill="#8b949e" font-size="9">Vector store · Industry context</text>
+  <text x="155" y="200" text-anchor="middle" fill="#8b949e" font-size="9">Account brief · AI opportunities</text>
+
+  <!-- Module 2: Discovery Agent -->
+  <rect x="355" y="138" width="190" height="80" rx="8" fill="#161b22" stroke="#a371f7" stroke-width="1.5"/>
+  <rect x="355" y="138" width="190" height="22" rx="8" fill="#a371f7" opacity="0.15"/>
+  <rect x="355" y="150" width="190" height="10" fill="#a371f7" opacity="0.15"/>
+  <text x="450" y="153" text-anchor="middle" fill="#a371f7" font-size="9" font-weight="700">02 · DISCOVERY AGENT</text>
+  <text x="450" y="172" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">LangGraph</text>
+  <text x="450" y="186" text-anchor="middle" fill="#8b949e" font-size="9">Stateful graph · Adaptive Q&amp;A</text>
+  <text x="450" y="200" text-anchor="middle" fill="#8b949e" font-size="9">Discovery summary · Gap analysis</text>
+
+  <!-- Module 3: RFP Analyzer -->
+  <rect x="650" y="138" width="190" height="80" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.5"/>
+  <rect x="650" y="138" width="190" height="22" rx="8" fill="#58a6ff" opacity="0.15"/>
+  <rect x="650" y="150" width="190" height="10" fill="#58a6ff" opacity="0.15"/>
+  <text x="745" y="153" text-anchor="middle" fill="#58a6ff" font-size="9" font-weight="700">03 · RFP ANALYZER</text>
+  <text x="745" y="172" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">OpenAI Agents SDK</text>
+  <text x="745" y="186" text-anchor="middle" fill="#8b949e" font-size="9">Tool use · Function calling</text>
+  <text x="745" y="200" text-anchor="middle" fill="#8b949e" font-size="9">Requirements · Go / No-Go</text>
+
+  <!-- Arrows from modules to Solution Architect -->
+  <line x1="250" y1="218" x2="340" y2="268" stroke="#8b949e" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="218" x2="450" y2="268" stroke="#8b949e" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="650" y1="218" x2="560" y2="268" stroke="#8b949e" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Module 4: Solution Architect -->
+  <rect x="300" y="272" width="300" height="90" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <rect x="300" y="272" width="300" height="22" rx="8" fill="#3fb950" opacity="0.15"/>
+  <rect x="300" y="284" width="300" height="10" fill="#3fb950" opacity="0.15"/>
+  <text x="450" y="287" text-anchor="middle" fill="#3fb950" font-size="9" font-weight="700">04 · SOLUTION ARCHITECT</text>
+  <text x="450" y="308" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">CrewAI — Multi-Agent Crew</text>
+  <rect x="314" y="318" width="76" height="32" rx="5" fill="#21262d" stroke="#3fb950" stroke-width="1" opacity="0.8"/>
+  <text x="352" y="330" text-anchor="middle" fill="#3fb950" font-size="8" font-weight="700">Researcher</text>
+  <text x="352" y="342" text-anchor="middle" fill="#8b949e" font-size="7">Requirements</text>
+  <text x="402" y="336" text-anchor="middle" fill="#8b949e" font-size="10">→</text>
+  <rect x="413" y="318" width="76" height="32" rx="5" fill="#21262d" stroke="#3fb950" stroke-width="1" opacity="0.8"/>
+  <text x="451" y="330" text-anchor="middle" fill="#3fb950" font-size="8" font-weight="700">Architect</text>
+  <text x="451" y="342" text-anchor="middle" fill="#8b949e" font-size="7">Solution design</text>
+  <text x="501" y="336" text-anchor="middle" fill="#8b949e" font-size="10">→</text>
+  <rect x="510" y="318" width="76" height="32" rx="5" fill="#21262d" stroke="#3fb950" stroke-width="1" opacity="0.8"/>
+  <text x="548" y="330" text-anchor="middle" fill="#3fb950" font-size="8" font-weight="700">Reviewer</text>
+  <text x="548" y="342" text-anchor="middle" fill="#8b949e" font-size="7">Risk &amp; score</text>
+
+  <!-- Arrow down to Proposal Writer -->
+  <line x1="450" y1="362" x2="450" y2="392" stroke="#8b949e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Module 5: Proposal Writer -->
+  <rect x="300" y="396" width="300" height="76" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <rect x="300" y="396" width="300" height="22" rx="8" fill="#e3b341" opacity="0.15"/>
+  <rect x="300" y="408" width="300" height="10" fill="#e3b341" opacity="0.15"/>
+  <text x="450" y="411" text-anchor="middle" fill="#e3b341" font-size="9" font-weight="700">05 · PROPOSAL WRITER</text>
+  <text x="450" y="430" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">LangChain — Prompt Chaining</text>
+  <text x="450" y="446" text-anchor="middle" fill="#8b949e" font-size="9">Exec Summary · Solution · Value</text>
+  <text x="450" y="460" text-anchor="middle" fill="#8b949e" font-size="9">Roadmap · Next Steps</text>
+
+  <!-- Arrows from Proposal to Evals and Observability -->
+  <line x1="370" y1="472" x2="220" y2="510" stroke="#8b949e" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="530" y1="472" x2="680" y2="510" stroke="#8b949e" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Module 6: Evals -->
+  <rect x="60" y="514" width="300" height="76" rx="8" fill="#161b22" stroke="#ff7b72" stroke-width="1.5"/>
+  <rect x="60" y="514" width="300" height="22" rx="8" fill="#ff7b72" opacity="0.15"/>
+  <rect x="60" y="526" width="300" height="10" fill="#ff7b72" opacity="0.15"/>
+  <text x="210" y="529" text-anchor="middle" fill="#ff7b72" font-size="9" font-weight="700">06 · EVALS</text>
+  <text x="210" y="548" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">LLM-as-Judge</text>
+  <text x="210" y="563" text-anchor="middle" fill="#8b949e" font-size="9">Completeness · Accuracy</text>
+  <text x="210" y="577" text-anchor="middle" fill="#8b949e" font-size="9">Actionability · Hallucination Risk  0–10</text>
+
+  <!-- Module 7: Observability -->
+  <rect x="540" y="514" width="300" height="76" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <rect x="540" y="514" width="300" height="22" rx="8" fill="#79c0ff" opacity="0.15"/>
+  <rect x="540" y="526" width="300" height="10" fill="#79c0ff" opacity="0.15"/>
+  <text x="690" y="529" text-anchor="middle" fill="#79c0ff" font-size="9" font-weight="700">07 · OBSERVABILITY</text>
+  <text x="690" y="548" text-anchor="middle" fill="#c9d1d9" font-size="10" font-weight="600">SQLite Spans</text>
+  <text x="690" y="563" text-anchor="middle" fill="#8b949e" font-size="9">Latency · Tokens · Cost/run</text>
+  <text x="690" y="577" text-anchor="middle" fill="#8b949e" font-size="9">Per-module dashboard · Error tracking</text>
+
+  <!-- Legend -->
+  <rect x="200" y="600" width="10" height="10" rx="2" fill="#f0883e"/>
+  <text x="215" y="609" fill="#8b949e" font-size="8">Input</text>
+  <rect x="270" y="600" width="10" height="10" rx="2" fill="#3fb950"/>
+  <text x="285" y="609" fill="#8b949e" font-size="8">Orchestration</text>
+  <rect x="380" y="600" width="10" height="10" rx="2" fill="#e3b341"/>
+  <text x="395" y="609" fill="#8b949e" font-size="8">Output</text>
+  <rect x="460" y="600" width="10" height="10" rx="2" fill="#ff7b72"/>
+  <text x="475" y="609" fill="#8b949e" font-size="8">Quality</text>
+  <rect x="545" y="600" width="10" height="10" rx="2" fill="#79c0ff"/>
+  <text x="560" y="609" fill="#8b949e" font-size="8">Observability</text>
+</svg>

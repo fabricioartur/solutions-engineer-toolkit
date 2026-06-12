@@ -40,50 +40,7 @@ Each module demonstrates a different framework from the enterprise agentic AI st
 
 ## Architecture
 
-```
-                        Solutions Engineer
-                               │
-              ┌────────────────┼────────────────┐
-              │                │                │
-              ▼                ▼                ▼
-    ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
-    │   Account    │  │  Discovery   │  │     RFP      │
-    │ Intelligence │  │    Agent     │  │   Analyzer   │
-    │ RAG +        │  │  LangGraph   │  │ OpenAI       │
-    │ ChromaDB     │  │  stateful    │  │ Agents SDK   │
-    └──────┬───────┘  └──────┬───────┘  └──────┬───────┘
-           │                 │                  │
-           └─────────────────┼──────────────────┘
-                             │
-                             ▼
-                   ┌──────────────────┐
-                   │    Solution      │
-                   │    Architect     │
-                   │  CrewAI crew:    │
-                   │  Researcher →    │
-                   │  Architect →     │
-                   │  Reviewer        │
-                   └────────┬─────────┘
-                            │
-                            ▼
-                   ┌──────────────────┐
-                   │    Proposal      │
-                   │     Writer       │
-                   │  LangChain       │
-                   │  prompt chain    │
-                   │  5 sections      │
-                   └────────┬─────────┘
-                            │
-              ┌─────────────┴──────────────┐
-              │                            │
-              ▼                            ▼
-   ┌──────────────────┐         ┌──────────────────┐
-   │      Evals       │         │  Observability   │
-   │  LLM-as-judge    │         │  SQLite spans    │
-   │  4 dimensions    │         │  latency, cost   │
-   │  0-10 scores     │         │  token tracking  │
-   └──────────────────┘         └──────────────────┘
-```
+![Architecture](docs/images/architecture.svg)
 
 ---
 
