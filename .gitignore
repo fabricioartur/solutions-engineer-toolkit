@@ -10,3 +10,4 @@ venv/
 chroma_db/
 output/
 *.xlsx
+*.db
