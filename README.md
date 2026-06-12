@@ -4,6 +4,10 @@
 
 ---
 
+> **By the author of [Manual do Engenheiro de Pré-Vendas](https://www.amazon.com/dp/B0H2FX2YXD)** — available on Amazon US (print) and [Amazon Brazil](https://www.amazon.com.br/dp/B0H2791DC3) (Kindle).
+
+---
+
 ## The Problem It Solves
 
 A senior Solutions Engineer juggles five distinct workflows in every enterprise deal:
