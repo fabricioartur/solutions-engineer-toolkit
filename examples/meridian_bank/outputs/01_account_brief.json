@@ -1,0 +1,83 @@
+{
+  "company": "Meridian Bank",
+  "industry": "Financial Services",
+  "company_overview": "Meridian Bank is a mid-sized Brazilian financial institution with R$180B in assets under management, 4.2 million retail customers, and 850,000 SME clients across 12 states. The bank operates a hybrid branch-digital model and is under competitive pressure from digital-native fintechs. Meridian has a dedicated data science team of 40 analysts and an active cloud migration program (AWS-first) initiated in 2024.",
+  "business_challenges": [
+    "KYC and AML compliance review consumes 1,200 analyst hours per month, with a 14-day average SLA that creates friction in account opening",
+    "Call center handles 2.1 million contacts per month with 38% first-call resolution — significantly below the 62% industry benchmark",
+    "Credit risk models rely on 18-month-old training data, limiting responsiveness to macroeconomic shifts",
+    "Regulatory reporting for BACEN takes 3 weeks per quarter and involves manual extraction from 7 different core systems",
+    "WhatsApp channel (used by 1.8M customers) currently offers only rule-based FAQ responses with no contextual understanding"
+  ],
+  "ai_maturity": "Developing",
+  "ai_opportunities": [
+    {
+      "use_case": "Intelligent Document Processing for KYC/AML",
+      "business_impact": "Reduce KYC review time from 14 days to under 2 days. Save 900+ analyst hours/month. Estimated annual savings: R$4.2M",
+      "complexity": "Medium",
+      "time_to_value": "10-14 weeks"
+    },
+    {
+      "use_case": "AI-Powered WhatsApp Virtual Assistant",
+      "business_impact": "Deflect 50-60% of tier-1 call center contacts. Improve NPS by 15-20 points. Estimated savings: R$8.1M/year in call center operations",
+      "complexity": "Medium",
+      "time_to_value": "12-16 weeks"
+    },
+    {
+      "use_case": "Regulatory Reporting Automation (BACEN)",
+      "business_impact": "Reduce quarterly reporting effort from 3 weeks to 3 days. Eliminate manual extraction errors. Estimated compliance risk reduction: R$2M/year",
+      "complexity": "High",
+      "time_to_value": "20-26 weeks"
+    },
+    {
+      "use_case": "Real-time Credit Risk Scoring Enhancement",
+      "business_impact": "Reduce non-performing loan rate by 1.2-1.8 percentage points. Estimated impact on credit losses: R$12M/year reduction",
+      "complexity": "High",
+      "time_to_value": "24-32 weeks"
+    },
+    {
+      "use_case": "AI-Assisted Financial Advisory (SME Segment)",
+      "business_impact": "Increase SME product attachment rate by 18%. Estimated revenue uplift: R$5.6M/year",
+      "complexity": "Medium",
+      "time_to_value": "16-20 weeks"
+    }
+  ],
+  "key_stakeholders": [
+    {
+      "title": "Chief Digital Officer",
+      "likely_priorities": "Accelerating digital transformation KPIs, reducing time-to-market for new features, demonstrating AI ROI to the board",
+      "engagement_tip": "Lead with business outcomes and timeline to value. Reference comparable Brazilian bank deployments. Avoid deep technical architecture in initial meetings."
+    },
+    {
+      "title": "Chief Risk Officer",
+      "likely_priorities": "BACEN compliance, model explainability, data sovereignty (Brazil data residency), audit trail for AI decisions",
+      "engagement_tip": "Address data residency proactively. Bring compliance documentation. Emphasize full audit logging and human-in-the-loop escalation paths."
+    },
+    {
+      "title": "Head of Retail Banking",
+      "likely_priorities": "Customer experience scores (NPS, CSAT), call center efficiency, digital engagement rates",
+      "engagement_tip": "Focus on the WhatsApp and call center use cases. Show before/after customer journey maps. Quantify deflection rates with benchmark data."
+    },
+    {
+      "title": "VP of Technology / CTO",
+      "likely_priorities": "AWS architecture alignment, API-first integration, scalability, vendor lock-in risk",
+      "engagement_tip": "Engage on architecture early. Demonstrate API-first approach, SDK availability, and how the solution integrates with existing AWS infrastructure."
+    }
+  ],
+  "recommended_opening_questions": [
+    "What's your current KYC SLA target vs. actual, and what's the business impact of missing it?",
+    "How many WhatsApp contacts per month go unanswered or require human escalation today?",
+    "What's your data science team's current capacity — are they resourced to manage a new AI system?",
+    "Where does AI sit on your board agenda for 2026 — is there a specific mandate or budget already allocated?",
+    "What's your current BACEN reporting process, and where does the most manual effort occur?"
+  ],
+  "competitive_landscape": "Bradesco and Itaú have both announced significant AI investments (R$2B+ combined) focused on customer service and credit. Nubank is raising the bar on AI-native UX. Meridian risks losing SME and younger retail customers to both incumbents with deeper pockets and fintechs with superior digital experience.",
+  "recommended_solution_approach": "Start with a focused POC on the WhatsApp Virtual Assistant — high ROI, visible to end customers, and achievable in 12-16 weeks without requiring deep core banking integration. Use this as a reference win to unlock budget for the higher-complexity KYC and regulatory reporting use cases.",
+  "risks_and_objections": [
+    "Data sovereignty: Meridian will require Brazil data residency — address with Azure Brazil South deployment option",
+    "BACEN auditability: AI decisions in credit and compliance must be fully explainable — prepare model cards and audit trail documentation",
+    "Integration complexity: Core banking systems are on-premise legacy — plan API gateway layer as integration pattern",
+    "Internal AI skepticism: Some business units may resist AI-driven process changes — recommend change management workstream alongside technical delivery",
+    "Budget cycle: If budget not allocated, a no-cost POC scoped to WhatsApp can demonstrate value before full investment decision"
+  ]
+}

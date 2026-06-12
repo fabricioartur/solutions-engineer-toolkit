@@ -1,0 +1,4 @@
+Meridian Bank — Brazilian financial institution, R$180B AUM, 4.2M retail customers.
+Evaluating AI for: WhatsApp customer service, KYC automation, and BACEN regulatory reporting.
+CDO has Q3 2026 mandate. Budget R$15M pre-approved. Data residency in Brazil mandatory.
+AWS-primary infrastructure. Oracle core banking on-premise.

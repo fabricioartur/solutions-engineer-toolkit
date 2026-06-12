@@ -1,0 +1,106 @@
+{
+  "approach": "API-first, cloud-native architecture on AWS Brazil South. Phase 1 delivers the WhatsApp Virtual Assistant as a standalone service with minimal core banking integration. Subsequent phases layer in KYC IDP and regulatory reporting automation, progressively integrating with core systems via an API gateway pattern.",
+  "components": [
+    {
+      "name": "WhatsApp Gateway",
+      "description": "Twilio WhatsApp Business API → API Gateway → LLM Orchestration Layer",
+      "technology": "Existing Twilio contract + AWS API Gateway",
+      "phase": 1
+    },
+    {
+      "name": "LLM Orchestration Layer",
+      "description": "LangGraph-based stateful conversation manager. Handles intent classification, context retention across turns, and escalation routing.",
+      "technology": "LangGraph + OpenAI GPT-5.4 + AWS Lambda",
+      "phase": 1
+    },
+    {
+      "name": "RAG Knowledge Base",
+      "description": "Vector store containing bank's product catalog, FAQ, and policy documents. Retrieval-augmented generation ensures responses are grounded in bank-specific content.",
+      "technology": "ChromaDB on AWS ECS + text-embedding-3-small",
+      "phase": 1
+    },
+    {
+      "name": "Human Escalation Router",
+      "description": "Confidence-threshold-based escalation to human agents. Full conversation context passed to agent on handoff.",
+      "technology": "AWS Connect + custom escalation logic",
+      "phase": 1
+    },
+    {
+      "name": "KYC Document Intelligence",
+      "description": "Multi-modal document extraction pipeline for CPF, CNPJ, income statements, and proof of address. Human-in-the-loop review for low-confidence extractions.",
+      "technology": "OpenAI GPT-5.4 Vision + AWS Textract (fallback) + custom validation layer",
+      "phase": 2
+    },
+    {
+      "name": "Audit & Observability Layer",
+      "description": "Full request/response logging for every AI interaction. Required for BACEN compliance and internal model risk management.",
+      "technology": "AWS CloudWatch + LangSmith + custom audit store (S3 + DynamoDB)",
+      "phase": 1
+    }
+  ],
+  "technology_choices": [
+    {
+      "choice": "OpenAI GPT-5.4 via Azure Brazil South",
+      "rationale": "Data residency compliance with BACEN requirements. Same API, same models, Brazilian infrastructure."
+    },
+    {
+      "choice": "LangGraph for conversation orchestration",
+      "rationale": "Stateful graph-based conversation management with built-in persistence. Production-proven for banking virtual assistants."
+    },
+    {
+      "choice": "ChromaDB for vector store",
+      "rationale": "Runs on AWS ECS (no external service). Supports incremental document updates as bank policies change."
+    },
+    {
+      "choice": "LangSmith for observability",
+      "rationale": "End-to-end LLM call tracing with token-level audit. Satisfies model risk management requirements."
+    }
+  ],
+  "phases": [
+    {
+      "phase": 1,
+      "name": "WhatsApp AI Assistant — MVP",
+      "duration_weeks": "1-14",
+      "deliverables": [
+        "WhatsApp virtual assistant handling top 5 customer intents",
+        "RAG knowledge base with product catalog and FAQ",
+        "Human escalation with full context handoff",
+        "Audit logging for all AI interactions",
+        "Pilot with 10,000 customers in SP region"
+      ],
+      "success_criteria": "50%+ deflection rate, CSAT ≥ 4.2/5.0 on AI-handled contacts"
+    },
+    {
+      "phase": 2,
+      "name": "KYC Document Intelligence",
+      "duration_weeks": "15-28",
+      "deliverables": [
+        "Automated extraction for 12 document types",
+        "Human-in-the-loop review workflow for <90% confidence",
+        "Integration with core banking onboarding system via API",
+        "SLA dashboard for operations team"
+      ],
+      "success_criteria": "KYC SLA reduced to 3 days, 85%+ straight-through processing rate"
+    },
+    {
+      "phase": 3,
+      "name": "Regulatory Reporting Automation",
+      "duration_weeks": "29-40",
+      "deliverables": [
+        "Automated BACEN report generation from Snowflake data",
+        "Exception flagging and human review workflow",
+        "Full audit trail with source traceability"
+      ],
+      "success_criteria": "BACEN reporting effort reduced from 3 weeks to 3 days per quarter"
+    }
+  ],
+  "review": {
+    "score": 84,
+    "risks": [
+      "Core banking API availability — phase 2 depends on APIs that may not exist yet",
+      "WhatsApp volume spike handling — stress test infrastructure before full rollout",
+      "Knowledge base maintenance — plan for quarterly review cycle of RAG content"
+    ],
+    "final_recommendation": "Architecture is sound and appropriately phased. Recommend starting phase 1 immediately with a 4-week scoping sprint to validate WhatsApp intent volume and core banking API readiness before committing to phase 2 timeline."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "summary": "Meridian Bank is a strong AI opportunity with clear executive sponsorship and a funded transformation agenda. The CDO has a Q3 2026 mandate to deploy at least two AI use cases in production. Budget of R$15M is pre-approved for digital transformation initiatives. Primary pain is in customer service (WhatsApp + call center) and compliance (KYC). The CRO is cautious but open — data residency and explainability are non-negotiable. Technical team is capable but stretched. They prefer a co-build model over a pure vendor delivery.",
+  "covered_dimensions": {
+    "Business Challenges": "KYC SLA of 14 days, 38% first-call resolution, BACEN reporting taking 3 weeks/quarter",
+    "Current Technology Stack": "AWS-primary, Oracle core banking (on-prem), WhatsApp Business API via Twilio, Snowflake data warehouse",
+    "AI Maturity & Previous Initiatives": "One production ML model (churn prediction, in production since 2023). Data science team of 40. No LLM production deployments yet.",
+    "Security & Compliance Requirements": "Brazil data residency mandatory. BACEN Resolution 4.658 compliance required. SOC2 Type II vendor requirement. Full audit trail for any AI decision in credit or compliance workflows.",
+    "Budget & Timeline": "R$15M pre-approved for 2026. CDO wants first production deployment by Q3 2026. Board review in December 2026.",
+    "Decision-Making Process & Stakeholders": "CDO is sponsor. CTO and CRO must sign off. Procurement requires 3 vendor bids for contracts above R$2M. 8-12 week procurement cycle.",
+    "Success Metrics": "KYC SLA target: 3 days (from 14). Call center deflection: 50%+. NPS improvement: +15 points. BACEN reporting: from 3 weeks to 3 days."
+  },
+  "gaps": [
+    "Data quality and labeling status of historical KYC documents — critical for IDP POC scoping",
+    "WhatsApp conversation volume breakdown by intent — needed to size the virtual assistant correctly",
+    "Existing AI governance framework — do they have a model risk management policy?",
+    "IT security approval timeline — how long does a new SaaS vendor take to get approved?"
+  ],
+  "recommended_next_questions": [
+    "Can you share a sample of anonymized KYC documents to assess extraction complexity during the POC scoping?",
+    "What's your WhatsApp conversation volume breakdown — what are the top 5 customer intents by volume?",
+    "Do you have a model risk management framework in place, or would that need to be developed as part of this engagement?",
+    "What's the typical IT security vendor approval timeline — and is there a fast-track path for strategic initiatives?"
+  ],
+  "discovery_quality_score": 81
+}
