@@ -5,24 +5,27 @@ Used to generate the README screenshot without an API key.
 """
 
 import json
-import time
 from pathlib import Path
 
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
-from rich.text import Text
-from rich import print as rprint
 
 console = Console(width=90)
 
-brief = json.loads(
-    Path("examples/meridian_bank/outputs/01_account_brief.json").read_text()
-)
+
+def load_account_intel() -> dict:
+    return json.loads(
+        Path("examples/meridian_bank/outputs/01_account_brief.json").read_text()
+    )
 
 
-def demo_account_intel():
+def render_account_intel(brief: dict):
     console.print()
+    console.rule(
+        "[bold cyan]$ python main.py account-intel 'Meridian Bank' --industry 'Financial Services'[/bold cyan]"
+    )
+
     console.print(
         Panel(
             "[bold cyan]Account Intelligence[/bold cyan] — RAG + ChromaDB + OpenAI\n"
@@ -30,7 +33,6 @@ def demo_account_intel():
             style="cyan",
         )
     )
-    time.sleep(0.4)
 
     console.print(
         Panel(
@@ -49,21 +51,26 @@ def demo_account_intel():
     colors = {"Low": "green", "Medium": "yellow", "High": "red"}
     for opp in brief["ai_opportunities"]:
         c = colors.get(opp["complexity"], "white")
+        impact = opp["business_impact"]
+        impact_display = impact[:55] + "…" if len(impact) > 55 else impact
         table.add_row(
             opp["use_case"],
-            opp["business_impact"][:55] + "…" if len(opp["business_impact"]) > 55 else opp["business_impact"],
+            impact_display,
             f"[{c}]{opp['complexity']}[/{c}]",
             opp["time_to_value"],
         )
     console.print(table)
-
     console.print(
         f"\n[green]✓[/green] Account Brief saved to [bold]output/meridian_bank_account.json[/bold]"
     )
 
 
-def demo_eval():
+def render_eval():
     console.print()
+    console.rule(
+        "[bold cyan]$ python main.py eval --module account-intel --input output/account.json[/bold cyan]"
+    )
+
     eval_result = json.loads(
         Path("examples/meridian_bank/outputs/04_eval_account_brief.json").read_text()
     )
@@ -86,21 +93,24 @@ def demo_eval():
     table.add_column("Justification")
 
     justifications = eval_result["justifications"]
-    dim_colors = {"completeness": "green", "accuracy": "cyan", "actionability": "green", "hallucination_risk": "yellow"}
     for dim, score in scores.items():
         color = "green" if score >= 7 else "yellow" if score >= 5 else "red"
+        j = justifications.get(dim, "")
+        j_display = j[:60] + "…" if len(j) > 60 else j
         table.add_row(
             dim.replace("_", " ").title(),
             f"[{color}]{score}/10[/{color}]",
-            justifications.get(dim, "")[:60] + "…" if len(justifications.get(dim, "")) > 60 else justifications.get(dim, ""),
+            j_display,
         )
     console.print(table)
     console.print(f"\n[bold]Top strength:[/bold]    {eval_result['top_strength'][:70]}…")
     console.print(f"[bold]Top improvement:[/bold] {eval_result['top_improvement'][:70]}…")
 
 
-def demo_metrics():
+def render_metrics():
     console.print()
+    console.rule("[bold cyan]$ python main.py metrics[/bold cyan]")
+
     table = Table(title="SE Toolkit — Observability Dashboard", show_lines=True, width=88)
     table.add_column("Module", style="bold", min_width=22)
     table.add_column("Runs", justify="right", min_width=6)
@@ -123,15 +133,11 @@ def demo_metrics():
     console.print("\n[bold]Total cost across all runs:[/bold] $0.0771 USD")
 
 
-console.print()
-console.rule("[bold cyan]$ python main.py account-intel 'Meridian Bank' --industry 'Financial Services'[/bold cyan]")
-demo_account_intel()
+# ── main ──────────────────────────────────────────────────────────────────────
 
-console.print()
-console.rule("[bold cyan]$ python main.py eval --module account-intel --input output/account.json[/bold cyan]")
-demo_eval()
+brief = load_account_intel()
 
-console.print()
-console.rule("[bold cyan]$ python main.py metrics[/bold cyan]")
-demo_metrics()
+render_account_intel(brief)
+render_eval()
+render_metrics()
 console.print()
