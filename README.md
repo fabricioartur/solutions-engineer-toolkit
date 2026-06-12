@@ -15,6 +15,8 @@ A senior Solutions Engineer juggles five distinct workflows in every enterprise 
 | RFP analysis | 3–6 hours reading + extracting | Under 90 seconds |
 | Architecture recommendation | Senior SE + 2-day whiteboard session | Multi-agent crew in minutes |
 | Proposal writing | 4–8 hours drafting | LangChain prompt chain, 5 sections |
+| Output quality assurance | Manual review — inconsistent | LLM-as-judge eval, scored 0–10 |
+| Cost & latency visibility | None | SQLite observability dashboard |
 
 **This toolkit does not replace the SE. It removes the low-value work so the SE can focus on what only humans can do: build trust, navigate politics, and close.**
 
@@ -31,6 +33,8 @@ Each module demonstrates a different framework from the enterprise agentic AI st
 | RFP Analyzer | **OpenAI Agents SDK** | Native tool use with function calling — the agent orchestrates 3 specialized tools sequentially |
 | Solution Architect | **CrewAI** | Multi-agent crew (Researcher → Architect → Reviewer) with role-based specialization |
 | Proposal Writer | **LangChain** | Prompt chaining with output parsers — each section builds on context from the previous |
+| **Evals** | **LLM-as-judge** | Automated quality scoring on 4 dimensions — separates demos from production-ready systems |
+| **Observability** | **SQLite + custom spans** | Latency, token usage, and cost tracking per module — no external service required |
 
 ---
 
@@ -45,10 +49,8 @@ Each module demonstrates a different framework from the enterprise agentic AI st
     ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
     │   Account    │  │  Discovery   │  │     RFP      │
     │ Intelligence │  │    Agent     │  │   Analyzer   │
-    │              │  │              │  │              │
     │ RAG +        │  │  LangGraph   │  │ OpenAI       │
     │ ChromaDB     │  │  stateful    │  │ Agents SDK   │
-    │ vector store │  │  graph       │  │ + tool use   │
     └──────┬───────┘  └──────┬───────┘  └──────┬───────┘
            │                 │                  │
            └─────────────────┼──────────────────┘
@@ -57,25 +59,30 @@ Each module demonstrates a different framework from the enterprise agentic AI st
                    ┌──────────────────┐
                    │    Solution      │
                    │    Architect     │
-                   │                  │
                    │  CrewAI crew:    │
-                   │  Researcher      │
-                   │  → Architect     │
-                   │  → Reviewer      │
+                   │  Researcher →    │
+                   │  Architect →     │
+                   │  Reviewer        │
                    └────────┬─────────┘
                             │
                             ▼
                    ┌──────────────────┐
                    │    Proposal      │
                    │     Writer       │
-                   │                  │
                    │  LangChain       │
                    │  prompt chain    │
                    │  5 sections      │
                    └────────┬─────────┘
                             │
-                            ▼
-              Customer-ready proposal (Markdown)
+              ┌─────────────┴──────────────┐
+              │                            │
+              ▼                            ▼
+   ┌──────────────────┐         ┌──────────────────┐
+   │      Evals       │         │  Observability   │
+   │  LLM-as-judge    │         │  SQLite spans    │
+   │  4 dimensions    │         │  latency, cost   │
+   │  0-10 scores     │         │  token tracking  │
+   └──────────────────┘         └──────────────────┘
 ```
 
 ---
@@ -261,6 +268,78 @@ Five chains run in sequence. Each section prompt receives the relevant context f
 
 ---
 
+## Module 6 — Evals
+### LLM-as-judge output quality scoring
+
+Evaluates any module output on four dimensions using the model as its own judge. This is the standard eval pattern used by OpenAI, Google, and Anthropic to measure output quality at scale — without human reviewers in the loop.
+
+```bash
+python main.py eval \
+  --module account-intel \
+  --input output/account.json \
+  --output output/eval_account.json
+```
+
+**Four dimensions scored 0–10:**
+
+| Dimension | What it measures |
+|-----------|-----------------|
+| **Completeness** | Are all fields populated with substantive content? |
+| **Accuracy** | Is the content internally consistent and grounded? |
+| **Actionability** | Can an SE use this output in a customer meeting tomorrow? |
+| **Hallucination Risk** | Does the output contain unsupported specific claims? |
+
+**Sample eval — Meridian Bank Account Brief:**
+
+```
+┌─────────────────────────────────┐
+│  Grade: B  │  Score: 8.5/10    │
+│  Production ready: ✓ Yes        │
+└─────────────────────────────────┘
+
+Dimension          Score    Justification
+Completeness       9/10     All fields populated — 5 opportunities, 4 stakeholders
+Accuracy           8/10     ROI figures clearly marked as estimates
+Actionability      9/10     Questions specific to financial services, ready to use
+Hallucination Risk 8/10     Minor: ROI numbers appear model-generated, not sourced
+
+Top strength:    Stakeholder tips and opening questions are highly specific
+Top improvement: Add confidence levels to ROI estimates before sharing
+```
+
+---
+
+## Module 7 — Observability
+### SQLite-backed span tracking
+
+Every module execution is recorded as a span: latency, token usage, cost estimate, and status. No external service required — data lives in a local SQLite file.
+
+```bash
+# After running any modules:
+python main.py metrics
+```
+
+**Sample dashboard:**
+
+```
+SE Toolkit — Observability Dashboard
+┌──────────────────────┬──────┬─────────────┬───────────────┬──────────────────┬────────┐
+│ Module               │ Runs │ Avg Latency │ Total Tokens  │ Total Cost (USD) │ Errors │
+├──────────────────────┼──────┼─────────────┼───────────────┼──────────────────┼────────┤
+│ solution-architect   │    3 │     42,180ms│        28,440 │          $0.0284 │      0 │
+│ account-intel        │    8 │      6,320ms│        19,200 │          $0.0096 │      0 │
+│ rfp-analyzer         │    2 │     18,740ms│        31,100 │          $0.0156 │      0 │
+│ discovery            │    5 │     12,600ms│        14,800 │          $0.0074 │      1 │
+│ proposal-writer      │    2 │     24,300ms│        22,600 │          $0.0113 │      0 │
+└──────────────────────┴──────┴─────────────┴───────────────┴──────────────────┴────────┘
+
+Total cost across all runs: $0.0723 USD
+```
+
+**Why this matters in production:** Without observability, you cannot answer "how much did this customer run cost?", "which module caused the timeout?", or "what's our p95 latency?" — the three questions every engineering leader asks before approving production deployment.
+
+---
+
 ## Full Example: Meridian Bank
 
 The `examples/meridian_bank/` directory contains pre-generated outputs for a complete fictional enterprise account — a Brazilian bank evaluating AI for customer service, compliance, and credit risk.
@@ -298,8 +377,12 @@ solutions-engineer-toolkit/
 │   │   └── agent.py                  # OpenAI Agents SDK + tool use
 │   ├── solution_architect/
 │   │   └── agent.py                  # CrewAI multi-agent crew
-│   └── proposal_writer/
-│       └── agent.py                  # LangChain prompt chaining
+│   ├── proposal_writer/
+│   │   └── agent.py                  # LangChain prompt chaining
+│   ├── evals/
+│   │   └── evaluator.py              # LLM-as-judge, 4 dimensions, 0-10 scores
+│   └── observability/
+│       └── tracker.py                # SQLite spans, latency, tokens, cost
 ├── knowledge_base/
 │   ├── financial_services.md         # Industry knowledge for RAG
 │   └── retail_ecommerce.md

@@ -244,5 +244,108 @@ def proposal(
     console.print(Markdown(md[:2000] + "\n\n*[truncated — see full file]*"))
 
 
+@cli.command("eval")
+@click.option("--module", required=True, help="Module name that produced the output.")
+@click.option("--input", "input_file", required=True, type=click.Path(exists=True), help="Output file to evaluate (JSON or MD).")
+@click.option("--output", default=None, type=click.Path(), help="Save evaluation to file.")
+def eval_output(module: str, input_file: str, output: str | None) -> None:
+    """Evaluate a module output using LLM-as-judge.
+
+    Scores the output on four dimensions: completeness, accuracy,
+    actionability, and hallucination risk. This is the eval layer that
+    separates production AI systems from demos.
+
+    \b
+    Example:
+      python main.py eval --module account-intel --input output/account.json
+    """
+    from tools.evals.evaluator import evaluate
+
+    config = _load_config()
+
+    raw = Path(input_file).read_text(encoding="utf-8")
+    try:
+        content = json.loads(raw)
+    except json.JSONDecodeError:
+        content = raw
+
+    with console.status(f"[cyan]Evaluating {module} output with LLM-as-judge...[/cyan]"):
+        result = evaluate(module=module, output=content, config=config)
+
+    scores = result.get("scores", {})
+    grade = result.get("overall_grade", "?")
+    overall = result.get("overall_score", 0)
+    ready = result.get("production_ready", False)
+    grade_color = {"A": "green", "B": "cyan", "C": "yellow", "D": "red", "F": "red"}.get(grade, "white")
+
+    console.print(Panel(
+        f"[bold {grade_color}]Grade: {grade}  |  Score: {overall}/10[/bold {grade_color}]\n"
+        f"[dim]Production ready: {'✓ Yes' if ready else '✗ No'}[/dim]",
+        title=f"Eval — {module}",
+        style=grade_color,
+    ))
+
+    table = Table(title="Dimension Scores", show_lines=True)
+    table.add_column("Dimension", style="bold")
+    table.add_column("Score", justify="center")
+    table.add_column("Justification")
+    justifications = result.get("justifications", {})
+    for dim, score in scores.items():
+        color = "green" if score >= 7 else "yellow" if score >= 5 else "red"
+        table.add_row(dim.replace("_", " ").title(), f"[{color}]{score}/10[/{color}]", justifications.get(dim, ""))
+    console.print(table)
+
+    console.print(f"\n[bold]Top strength:[/bold] {result.get('top_strength', '')}")
+    console.print(f"[bold]Top improvement:[/bold] {result.get('top_improvement', '')}")
+
+    out = Path(output) if output else None
+    _write_output(result, out, "Evaluation Report")
+
+
+@cli.command("metrics")
+def metrics() -> None:
+    """Show observability dashboard — latency, tokens, and cost by module.
+
+    \b
+    Example:
+      python main.py metrics
+    """
+    from tools.observability.tracker import get_summary, get_metrics
+
+    summary = get_summary()
+    by_module = summary.get("by_module", [])
+
+    if not by_module:
+        console.print("[yellow]No metrics recorded yet. Run any toolkit module first.[/yellow]")
+        return
+
+    table = Table(title="SE Toolkit — Observability Dashboard", show_lines=True)
+    table.add_column("Module", style="bold")
+    table.add_column("Runs", justify="right")
+    table.add_column("Avg Latency", justify="right")
+    table.add_column("Total Tokens", justify="right")
+    table.add_column("Total Cost (USD)", justify="right")
+    table.add_column("Errors", justify="right")
+
+    total_cost = 0.0
+    for row in by_module:
+        latency = f"{row['avg_latency_ms']:,}ms"
+        tokens = f"{(row['total_input_tokens'] or 0) + (row['total_output_tokens'] or 0):,}"
+        cost = row["total_cost_usd"] or 0.0
+        total_cost += cost
+        error_color = "red" if row["errors"] else "green"
+        table.add_row(
+            row["module"],
+            str(row["runs"]),
+            latency,
+            tokens,
+            f"${cost:.4f}",
+            f"[{error_color}]{row['errors']}[/{error_color}]",
+        )
+
+    console.print(table)
+    console.print(f"\n[bold]Total cost across all runs:[/bold] ${total_cost:.4f} USD")
+
+
 if __name__ == "__main__":
     cli()

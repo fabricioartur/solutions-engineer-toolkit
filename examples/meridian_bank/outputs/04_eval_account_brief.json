@@ -1,0 +1,20 @@
+{
+  "module": "account-intel",
+  "scores": {
+    "completeness": 9,
+    "accuracy": 8,
+    "actionability": 9,
+    "hallucination_risk": 8
+  },
+  "justifications": {
+    "completeness": "All expected fields are populated with substantive content — 5 AI opportunities, 4 stakeholders, 5 opening questions, and a full risk register.",
+    "accuracy": "Recommendations are well-aligned with stated challenges; ROI figures are clearly marked as estimates rather than guarantees.",
+    "actionability": "An SE could walk into a Meridian Bank meeting tomorrow using this brief — questions are specific, stakeholder tips are tactical, and objections are pre-handled.",
+    "hallucination_risk": "Minor risk on ROI numbers (R$4.2M, R$8.1M) which appear model-generated rather than sourced — recommend flagging as estimates in customer-facing use."
+  },
+  "overall_score": 8.5,
+  "overall_grade": "B",
+  "top_strength": "Actionability is exceptional — the stakeholder engagement tips and opening questions are highly specific to financial services and ready to use.",
+  "top_improvement": "Add source citations or confidence levels to ROI estimates to reduce hallucination risk before sharing with customers.",
+  "production_ready": true
+}
